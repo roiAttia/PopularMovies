@@ -1,5 +1,6 @@
 package roiattia.com.newpopularmovies.ui;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +8,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import roiattia.com.newpopularmovies.BuildConfig;
 import roiattia.com.newpopularmovies.R;
 import roiattia.com.newpopularmovies.models.Movie;
-import roiattia.com.newpopularmovies.rest.RetrofitClient;
-import roiattia.com.newpopularmovies.rest.TheMoviesDbService;
 import roiattia.com.newpopularmovies.utils.FetchDataUtil;
 
 public class MoviesListActivity extends AppCompatActivity
@@ -22,6 +17,8 @@ public class MoviesListActivity extends AppCompatActivity
 
     private List<Movie> mMovies;
     private MoviesListFragment mMoviesListFragment;
+    private MovieDetailsFragment mMovieDetailsFragment;
+    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +29,26 @@ public class MoviesListActivity extends AppCompatActivity
         fetchDataUtil.fetchMoviesList(FetchDataUtil.POPULARITY);
 
         mMoviesListFragment = new MoviesListFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        mMovieDetailsFragment = new MovieDetailsFragment();
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentManager.beginTransaction()
                 .add(R.id.fl_movies, mMoviesListFragment)
                 .commit();
     }
 
     @Override
-    public void onClick(int movieIndex) {
-        Toast.makeText(this, mMovies.get(movieIndex).title(), Toast.LENGTH_SHORT).show();
+    public void onMovieClick(int movieIndex) {
+        boolean isTwoPane = getResources().getBoolean(R.bool.is_tablet);
+        if(isTwoPane) {
+            mMovieDetailsFragment.setMovieData(mMovies.get(movieIndex));
+            mFragmentManager.beginTransaction()
+                    .replace(R.id.fl_movies, mMovieDetailsFragment)
+                    .commit();
+        } else {
+            Intent intent = new Intent(MoviesListActivity.this, MovieDetailsActivity.class);
+            intent.putExtra("name", mMovies.get(movieIndex));
+            startActivity(intent);
+        }
     }
 
     @Override

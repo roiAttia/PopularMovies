@@ -8,27 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import roiattia.com.newpopularmovies.R;
 import roiattia.com.newpopularmovies.models.Movie;
+import roiattia.com.newpopularmovies.utils.ConstantsUtil;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapterViewHolder> {
-
-    /* the url for movie's poster with size of w185 */
-    public static final String MOVIES_BASE_URL_POSTER_PATH =
-            "http://image.tmdb.org/t/p/";
-
-    /* the url for movie's poster with size of w185 */
-    public static final String YOUTUBE_BASE_URL_PATH =
-            "https://www.youtube.com/watch?v=";
-
-    /* the url for movie's poster with size of w185 */
-    public static final String MOVIES_POSTER_SIZE =
-            "w342/";
 
     private static final String TAG = MoviesAdapter.class.getSimpleName();
     private List<Movie> mMovieList;
@@ -36,10 +24,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapt
     private final MovieAdapterOnClickHandler mClickHandler;
 
     /**
-     * The interface that receives onClick messages.
+     * The interface that receives onMovieClick messages.
      */
     public interface MovieAdapterOnClickHandler {
-        void onClick(int movieIndex);
+        void onMovieClick(int movieIndex);
     }
 
     public MoviesAdapter(Context context, MovieAdapterOnClickHandler clickHandler) {
@@ -60,7 +48,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapt
     public void onBindViewHolder(@NonNull MovieAdapterViewHolder holder, int position) {
         String moviePosterPath = mMovieList.get(position).posterPath();
         Picasso.with(mContext)
-                .load(MOVIES_BASE_URL_POSTER_PATH + MOVIES_POSTER_SIZE + moviePosterPath)
+                .load(ConstantsUtil.MOVIES_BASE_URL_POSTER_PATH +
+                        ConstantsUtil.MOVIES_POSTER_SIZE +
+                        moviePosterPath)
                 .fit()
                 .into(holder.mMoviePoster);
     }
@@ -84,7 +74,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapt
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            mClickHandler.onClick(adapterPosition);
+            mClickHandler.onMovieClick(adapterPosition);
         }
     }
 
