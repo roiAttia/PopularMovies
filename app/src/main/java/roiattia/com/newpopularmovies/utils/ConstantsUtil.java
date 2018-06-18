@@ -13,6 +13,8 @@ public class ConstantsUtil {
             "https://www.youtube.com/watch?v=";
 
     /* the url for movie's poster with size of w185 */
-    public static final String MOVIES_POSTER_SIZE =
-            "w342/";
+    public static final String MOVIES_POSTER_SIZE = "w342/";
+    public static final String CATEGORY = "category";
+    public static final String MOVIES_LIST_FRAGMENT = "movies-list-fragment";
+    public static final String MOVIE_DETAILS_FRAGMENT = "movies-details-fragment";
 }

@@ -11,18 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MoviesListActivity">
+        <activity android:name=".ui.MoviesListActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MovieDetailsActivity" />
+
         <activity
             android:name=".ui.MovieDetailsActivity"
-            android:label="@string/title_activity_movie_details_new"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".ui.MoviesListActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

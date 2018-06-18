@@ -1,5 +1,9 @@
 <resources>
-    <dimen name="app_bar_height">180dp</dimen>
+    <!-- Movie's List Item -->
+    <dimen name="movie_card_margin">4dp</dimen>
+    <dimen name="movie_poster_height">250dp</dimen>
+
+    <dimen name="app_bar_height">220dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
 </resources>

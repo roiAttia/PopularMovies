@@ -17,4 +17,24 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="detailsSpaces">
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="detailsHeadlineAccentColor">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="errorMessages" parent="detailsHeadlineAccentColor">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="detailsHeadlineWhite">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>

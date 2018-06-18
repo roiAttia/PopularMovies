@@ -44,7 +44,10 @@ public class MoviesListFragment extends Fragment {
         mRecyclerView.setAdapter(moviesAdapter);
         mRecyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager =
-                new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+                new GridLayoutManager(getContext(),
+                        getResources().getInteger(R.integer.columns_number),
+                        GridLayoutManager.VERTICAL,
+                        false);
         mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 }
