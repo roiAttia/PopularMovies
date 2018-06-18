@@ -34,6 +34,7 @@ public class MovieDetailsFragment extends Fragment {
 
         overviewText.setText(mMovie.overview());
         releaseDateText.setText(mMovie.releaseDate());
+        
         averageRatingText.setText(String.valueOf(mMovie.voteAverage()));
         Picasso.with(getContext())
                 .load(ConstantsUtil.MOVIES_BASE_URL_POSTER_PATH +
