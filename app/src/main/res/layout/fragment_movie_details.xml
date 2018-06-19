@@ -31,51 +31,28 @@
             app:srcCompat="@drawable/poster_example" />
 
         <TextView
-            android:id="@+id/tv_release_date_headline"
-            style="@style/detailsHeadlineWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorAccent"
-            android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/iv_poster"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tv_year_released"
             style="@style/detailsSpaces"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/colorWhite"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_release_date_headline"
-            app:layout_constraintTop_toBottomOf="@+id/tv_release_date_headline"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_avg_rating"
+            app:layout_constraintTop_toBottomOf="@+id/tv_avg_rating"
             tools:text="2015-02-02" />
-
-        <TextView
-            android:id="@+id/tv_rating_headline"
-            style="@style/detailsHeadlineWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/colorAccent"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/tv_year_released"
-            app:layout_constraintTop_toBottomOf="@+id/tv_year_released" />
 
         <TextView
             android:id="@+id/tv_avg_rating"
             style="@style/detailsSpaces"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
             android:textColor="@color/colorWhite"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_rating_headline"
-            app:layout_constraintTop_toBottomOf="@+id/tv_rating_headline"
-            tools:text="8.1/10" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_poster"
+            app:layout_constraintTop_toTopOf="@+id/iv_poster"
+            tools:text="8.1" />
 
         <TextView
             android:id="@+id/tv_overview_headline"
@@ -112,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_overview" />
 
         <TextView
-            android:id="@+id/layout_trailers_headline"
+            android:id="@+id/tv_trailers_headline"
             style="@style/detailsHeadlineAccentColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +111,7 @@
             android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_trailers_headline">
+            app:layout_constraintTop_toBottomOf="@+id/tv_trailers_headline">
 
         </LinearLayout>
 
@@ -147,7 +124,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_trailers_headline" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_trailers_headline" />
 
         <View
             android:id="@+id/line_reviews"
@@ -180,5 +157,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_reviews_headline" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_avg_rating"
+            app:layout_constraintStart_toEndOf="@+id/tv_avg_rating" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

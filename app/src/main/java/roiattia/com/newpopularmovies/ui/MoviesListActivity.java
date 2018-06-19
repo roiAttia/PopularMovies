@@ -79,7 +79,7 @@ public class MoviesListActivity extends AppCompatActivity
     }
 
     @Override
-    public void onPostExecute(List<Movie> movieList) {
+    public void onPostExecute(List movieList) {
         mMovies = movieList;
         mMoviesListFragment.setMoviesData(mMovies);
     }

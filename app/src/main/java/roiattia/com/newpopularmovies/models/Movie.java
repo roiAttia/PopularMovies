@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class Movie implements Parcelable {
 
     @SerializedName("id")
-    public abstract String id();
+    public abstract int id();
     @SerializedName("original_title")
     public abstract String originalTitle();
     @SerializedName("title")
