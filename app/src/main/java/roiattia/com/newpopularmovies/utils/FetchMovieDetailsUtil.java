@@ -1,7 +1,5 @@
 package roiattia.com.newpopularmovies.utils;
 
-import android.content.Context;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,14 +15,12 @@ import roiattia.com.newpopularmovies.rest.TheMoviesDbService;
 
 public class FetchMovieDetailsUtil {
 
-    private TheMoviesDbService mService;
-    private Context mContext;
+    private final TheMoviesDbService mService;
     private final FetchDataUtilHandler mHandler;
 
-    public FetchMovieDetailsUtil(Context context,FetchDataUtilHandler handler){
+    public FetchMovieDetailsUtil(FetchDataUtilHandler handler){
         mService = RetrofitClient.getClient().create(TheMoviesDbService.class);
         mHandler = handler;
-        mContext = context;
     }
 
     public interface FetchDataUtilHandler{

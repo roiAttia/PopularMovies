@@ -1,12 +1,9 @@
 package roiattia.com.newpopularmovies.rest;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import roiattia.com.newpopularmovies.models.Movie;
 import roiattia.com.newpopularmovies.models.MovieResponse;
 import roiattia.com.newpopularmovies.models.ReviewsResponse;
 import roiattia.com.newpopularmovies.models.TrailersResponse;

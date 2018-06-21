@@ -20,7 +20,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapt
 
     private static final String TAG = MoviesAdapter.class.getSimpleName();
     private List<Movie> mMovieList;
-    private Context mContext;
+    private final Context mContext;
     private final MovieAdapterOnClickHandler mClickHandler;
 
     /**
@@ -63,7 +63,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieAdapt
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
 
-        ImageView mMoviePoster;
+        final ImageView mMoviePoster;
 
         MovieAdapterViewHolder(View itemView) {
             super(itemView);

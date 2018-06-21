@@ -11,7 +11,7 @@ public class RetrofitClient {
 
     private static Retrofit retrofit = null;
 
-    private static GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(
+    private static final GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(
             new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
                     .create());
 

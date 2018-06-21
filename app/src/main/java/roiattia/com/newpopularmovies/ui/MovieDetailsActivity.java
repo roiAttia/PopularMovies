@@ -4,13 +4,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -57,7 +55,7 @@ public class MovieDetailsActivity extends AppCompatActivity
         //this line shows back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        FetchMovieDetailsUtil fetchMovieDetailsUtil = new FetchMovieDetailsUtil(this, this);
+        FetchMovieDetailsUtil fetchMovieDetailsUtil = new FetchMovieDetailsUtil(this);
         fetchMovieDetailsUtil.fetchReviews(mMovie.id());
         fetchMovieDetailsUtil.fetchTrailers(mMovie.id());
         getSupportActionBar().setTitle(mMovie.title());
@@ -71,6 +69,10 @@ public class MovieDetailsActivity extends AppCompatActivity
                 .into(imageView);
 
         mMovieDetailsFragment.setMovieData(mMovie);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fl_details_place_holder, mMovieDetailsFragment)
+                .commit();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -91,10 +93,6 @@ public class MovieDetailsActivity extends AppCompatActivity
     public void onPostExecute(List movieDataList, String type) {
         if(type.equals(REVIEWS)) {
             mMovieDetailsFragment.setReviewsData(movieDataList);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fl_details_place_holder, mMovieDetailsFragment)
-                    .commit();
         } else if(type.equals(TRAILERS)){
             mMovieDetailsFragment.setTrailersData(movieDataList);
             mTrailers = movieDataList;

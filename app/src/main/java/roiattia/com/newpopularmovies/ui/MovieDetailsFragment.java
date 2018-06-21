@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -63,15 +62,9 @@ public class MovieDetailsFragment extends Fragment {
                         mMovie.posterPath())
                 .fit()
                 .into(posterImage);
-        updateReviews();
-        updateTrailers();
+
 
         return rootView;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     public void setMovieData(Movie movie) {
@@ -80,10 +73,12 @@ public class MovieDetailsFragment extends Fragment {
 
     public void setReviewsData(List<UserReview> userReviewList) {
         mUserReviews = userReviewList;
+        updateReviews();
     }
 
     public void setTrailersData(List<Trailers> trailers){
         mTrailers = trailers;
+        updateTrailers();
     }
 
     private void updateTrailers() {
@@ -109,6 +104,8 @@ public class MovieDetailsFragment extends Fragment {
             reviewsHeadlineText.setText(R.string.no_reviews_message);
         } else {
             reviewsHeadlineText.setText(R.string.users_reviews);
+            reviewsText.invalidate();
+            reviewsText.requestLayout();
             for (UserReview userReview : mUserReviews) {
                 reviewsText.append(Html.fromHtml("<b>" + getString(R.string.review_by)
                         + " " + userReview.author() + "</b>" + "<br>" + userReview.review() + "<br><br>"));

@@ -5,26 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import roiattia.com.newpopularmovies.BuildConfig;
 import roiattia.com.newpopularmovies.R;
 import roiattia.com.newpopularmovies.models.Movie;
-import roiattia.com.newpopularmovies.models.MovieResponse;
-import roiattia.com.newpopularmovies.rest.RetrofitClient;
-import roiattia.com.newpopularmovies.rest.TheMoviesDbService;
-import roiattia.com.newpopularmovies.utils.FetchDataUtil;
 
 public class MoviesListFragment extends Fragment {
 

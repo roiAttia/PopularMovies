@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccentLight"
+    android:background="@color/colorMovieDetailsBackgroundColor"
     android:fitsSystemWindows="true"
     tools:context=".ui.MovieDetailsActivity">
 
@@ -16,7 +16,6 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="top"
@@ -30,10 +29,10 @@
                 android:id="@+id/iv_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/poster_example" />
+                app:srcCompat="@drawable/poster_example"
+                android:contentDescription="@string/movie_details_backdrop_image_content_description" />
 
             <View
-                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/photo_background_protection" />

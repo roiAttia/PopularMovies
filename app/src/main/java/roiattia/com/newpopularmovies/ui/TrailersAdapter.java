@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import roiattia.com.newpopularmovies.R;
@@ -19,7 +18,7 @@ import roiattia.com.newpopularmovies.utils.ConstantsUtil;
 public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.TrailersAdapterViewHolder> {
 
     private List<Trailers> mTrailers;
-    private Context mContext;
+    private final Context mContext;
     private final TrailersAdapterOnClickHandler mClickHandler;
 
     /**
@@ -65,7 +64,7 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Traile
     public class TrailersAdapterViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
 
-        ImageView trailerThumbnail;
+        final ImageView trailerThumbnail;
 
         TrailersAdapterViewHolder(View itemView) {
             super(itemView);

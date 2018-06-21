@@ -2,7 +2,6 @@ package roiattia.com.newpopularmovies.utils;
 
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,14 +11,13 @@ import roiattia.com.newpopularmovies.BuildConfig;
 import roiattia.com.newpopularmovies.R;
 import roiattia.com.newpopularmovies.models.Movie;
 import roiattia.com.newpopularmovies.models.MovieResponse;
-import roiattia.com.newpopularmovies.models.UserReview;
 import roiattia.com.newpopularmovies.rest.RetrofitClient;
 import roiattia.com.newpopularmovies.rest.TheMoviesDbService;
 
 public class FetchDataUtil {
 
-    private TheMoviesDbService mService;
-    private Context mContext;
+    private final TheMoviesDbService mService;
+    private final Context mContext;
     private final FetchDataUtilHandler mHandler;
 
     public FetchDataUtil(Context context, FetchDataUtilHandler handler){

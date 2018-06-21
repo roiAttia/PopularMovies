@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fl_details_place_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="32dp"
@@ -11,4 +10,9 @@
     tools:context=".ui.MovieDetailsActivity"
     tools:showIn="@layout/activity_movie_details">
 
-</android.support.v7.widget.CardView>
+    <FrameLayout
+        android:id="@+id/fl_details_place_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</android.support.v4.widget.NestedScrollView>
