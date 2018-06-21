@@ -18,6 +18,9 @@ and optimize the experience for various mobile devices. You will hone these fund
 - [AutoValue](https://github.com/google/auto) with [Gson Extension](https://github.com/rharter/auto-value-gson)
 - [Picasso](http://square.github.io/picasso/) 
 
+## Note:
+Add your theMovieDB API key to the gradle.properties file.
+
 ## Screenshots:
 ### Nexus 5X - Portrait:
 <img src="https://github.com/roiAttia/PopularMovies/blob/master/app/screenshots/Nexus5XPortrait.jpg" />
