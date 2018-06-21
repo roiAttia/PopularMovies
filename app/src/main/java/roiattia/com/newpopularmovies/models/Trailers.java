@@ -1,12 +1,14 @@
 package roiattia.com.newpopularmovies.models;
 
+import android.os.Parcelable;
+
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
 @AutoValue
-public abstract class Trailers {
+public abstract class Trailers implements Parcelable {
 
     @SerializedName("key")
     public abstract String key();

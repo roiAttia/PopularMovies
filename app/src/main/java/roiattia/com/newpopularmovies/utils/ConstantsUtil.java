@@ -22,4 +22,6 @@ public class ConstantsUtil {
     public static final String MOVIE_DETAILS = "movie-details";
     public static final String REVIEWS = "reviews";
     public static final String TRAILERS = "trailers";
+    public static final String MOVIE = "movie";
+    public static final String MOVIE_DETAILS_FRAGMENT_NEW = "new";
 }

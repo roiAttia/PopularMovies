@@ -12,4 +12,6 @@
     <string name="review_by">REVIEW BY:</string>
     <string name="no_trailers_message">NO TRAILERS</string>
     <string name="watch_trailers_message">WATCH TRAILERS</string>
+    <string name="movie_rating_ten">/10</string>
+    <string name="overview">OVERVIEW</string>
 </resources>

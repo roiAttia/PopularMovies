@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -33,27 +34,35 @@ public class MovieDetailsActivity extends AppCompatActivity
     private static final String TAG = MoviesListActivity.class.getSimpleName();
     private MovieDetailsFragment mMovieDetailsFragment;
     private List<Trailers> mTrailers;
+    private Movie mMovie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+
+        if(savedInstanceState != null){
+            mMovie = savedInstanceState.getParcelable(ConstantsUtil.MOVIE);
+            mMovieDetailsFragment = (MovieDetailsFragment) getSupportFragmentManager()
+                    .getFragment(savedInstanceState, ConstantsUtil.MOVIE_DETAILS_FRAGMENT);
+        } else {
+            // get intent from calling activity
+            Bundle data = getIntent().getExtras();
+            mMovie = data.getParcelable("name");
+            mMovieDetailsFragment = new MovieDetailsFragment();
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //this line shows back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // get intent from calling activity
-        Bundle data = getIntent().getExtras();
-        Movie movie = data.getParcelable("name");
-
         FetchMovieDetailsUtil fetchMovieDetailsUtil = new FetchMovieDetailsUtil(this, this);
-        fetchMovieDetailsUtil.fetchReviews(movie.id());
-        fetchMovieDetailsUtil.fetchTrailers(movie.id());
-
-        getSupportActionBar().setTitle(movie.title());
+        fetchMovieDetailsUtil.fetchReviews(mMovie.id());
+        fetchMovieDetailsUtil.fetchTrailers(mMovie.id());
+        getSupportActionBar().setTitle(mMovie.title());
         ImageView imageView = findViewById(R.id.iv_backdrop);
-        String moviePosterPath = movie.backdropPath();
+        String moviePosterPath = mMovie.backdropPath();
         Picasso.with(this)
                 .load(ConstantsUtil.MOVIES_BASE_URL_POSTER_PATH +
                         ConstantsUtil.MOVIES_POSTER_SIZE +
@@ -61,12 +70,7 @@ public class MovieDetailsActivity extends AppCompatActivity
                 .fit()
                 .into(imageView);
 
-        mMovieDetailsFragment = new MovieDetailsFragment();
-        mMovieDetailsFragment.setMovieData(movie);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.fl_details_place_holder, mMovieDetailsFragment)
-                .commit();
+        mMovieDetailsFragment.setMovieData(mMovie);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +91,10 @@ public class MovieDetailsActivity extends AppCompatActivity
     public void onPostExecute(List movieDataList, String type) {
         if(type.equals(REVIEWS)) {
             mMovieDetailsFragment.setReviewsData(movieDataList);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fl_details_place_holder, mMovieDetailsFragment)
+                    .commit();
         } else if(type.equals(TRAILERS)){
             mMovieDetailsFragment.setTrailersData(movieDataList);
             mTrailers = movieDataList;
@@ -108,5 +116,13 @@ public class MovieDetailsActivity extends AppCompatActivity
         } catch (ActivityNotFoundException ex) {
             startActivity(webIntent);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(ConstantsUtil.MOVIE, mMovie);
+        getSupportFragmentManager()
+                .putFragment(outState, ConstantsUtil.MOVIE_DETAILS_FRAGMENT, mMovieDetailsFragment);
     }
 }

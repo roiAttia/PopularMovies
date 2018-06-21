@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fitsSystemWindows="false"
     tools:context=".MovieDetailsFragment">
 
@@ -14,16 +14,17 @@
         <View
             android:id="@+id/view_image_background"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/colorMovieDetailsBackgroundDefault" />
+            android:layout_height="@dimen/image_background_height"
+            android:background="@color/colorImageBackground" />
 
         <ImageView
             android:id="@+id/iv_poster"
-            android:layout_width="140dp"
+            android:layout_width="@dimen/image_width"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/image_vertical_margin"
+            android:layout_marginStart="@dimen/image_start_margin"
+            android:layout_marginTop="@dimen/image_vertical_margin"
+            android:contentDescription="@string/movies_poster_content_description"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="@+id/view_image_background"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -31,37 +32,42 @@
             app:srcCompat="@drawable/poster_example" />
 
         <TextView
-            android:id="@+id/tv_year_released"
-            style="@style/detailsSpaces"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_avg_rating"
-            app:layout_constraintTop_toBottomOf="@+id/tv_avg_rating"
-            tools:text="2015-02-02" />
-
-        <TextView
             android:id="@+id/tv_avg_rating"
-            style="@style/detailsSpaces"
+            style="@style/detailsHeadlineWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:layout_marginStart="@dimen/movie_avg_rating_start_margin"
             app:layout_constraintStart_toEndOf="@+id/iv_poster"
             app:layout_constraintTop_toTopOf="@+id/iv_poster"
             tools:text="8.1" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_rating_ten"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_avg_rating"
+            app:layout_constraintStart_toEndOf="@+id/tv_avg_rating" />
+
+        <TextView
+            android:id="@+id/tv_year_released"
+            style="@style/detailsHeadlineWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/movie_release_top_margin"
+            app:layout_constraintStart_toStartOf="@+id/tv_avg_rating"
+            app:layout_constraintTop_toBottomOf="@+id/tv_avg_rating"
+            tools:text="2015-02-02" />
 
         <TextView
             android:id="@+id/tv_overview_headline"
             style="@style/detailsHeadlineAccentColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="OVERVIEW"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_16"
+            android:text="@string/overview"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_image_background" />
 
@@ -69,10 +75,11 @@
             android:id="@+id/tv_overview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/text_start_margin"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_8"
             android:layout_weight="1"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_overview_headline"
@@ -81,8 +88,8 @@
         <View
             android:id="@+id/line_trailers"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginTop="@dimen/text_top_margin_8"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,8 +100,8 @@
             style="@style/detailsHeadlineAccentColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_trailers"
             tools:text="WATCH TRAILERS" />
@@ -104,8 +111,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_margin="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_margin="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_8"
             android:orientation="vertical"
             android:padding="0dp"
             android:visibility="gone"
@@ -119,9 +126,9 @@
             android:id="@+id/rv_trailers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/text_start_margin"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_trailers_headline" />
@@ -129,8 +136,8 @@
         <View
             android:id="@+id/line_reviews"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginTop="@dimen/text_top_margin_8"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,8 +148,8 @@
             style="@style/detailsHeadlineAccentColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_reviews"
             tools:text="USERS REVIEWS" />
@@ -151,20 +158,14 @@
             android:id="@+id/tv_reviews"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/text_start_margin"
+            android:layout_marginStart="@dimen/text_start_margin"
+            android:layout_marginTop="@dimen/text_top_margin_8"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_reviews_headline" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/10"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_avg_rating"
-            app:layout_constraintStart_toEndOf="@+id/tv_avg_rating" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

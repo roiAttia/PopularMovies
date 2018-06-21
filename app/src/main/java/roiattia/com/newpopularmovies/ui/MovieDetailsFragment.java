@@ -1,6 +1,7 @@
 package roiattia.com.newpopularmovies.ui;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,6 +48,12 @@ public class MovieDetailsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_movie_details, container, false);
         ButterKnife.bind(this, rootView);
 
+        if(savedInstanceState != null){
+            mMovie = savedInstanceState.getParcelable("movie");
+            mUserReviews = savedInstanceState.getParcelableArrayList("reviews");
+            mTrailers = savedInstanceState.getParcelableArrayList("trailers");
+        }
+
         overviewText.setText(mMovie.overview());
         releaseDateText.setText(mMovie.releaseDate());
         averageRatingText.setText(String.valueOf(mMovie.voteAverage()));
@@ -55,6 +63,8 @@ public class MovieDetailsFragment extends Fragment {
                         mMovie.posterPath())
                 .fit()
                 .into(posterImage);
+        updateReviews();
+        updateTrailers();
 
         return rootView;
     }
@@ -70,12 +80,10 @@ public class MovieDetailsFragment extends Fragment {
 
     public void setReviewsData(List<UserReview> userReviewList) {
         mUserReviews = userReviewList;
-        updateReviews();
     }
 
     public void setTrailersData(List<Trailers> trailers){
         mTrailers = trailers;
-        updateTrailers();
     }
 
     private void updateTrailers() {
@@ -106,5 +114,13 @@ public class MovieDetailsFragment extends Fragment {
                         + " " + userReview.author() + "</b>" + "<br>" + userReview.review() + "<br><br>"));
             }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("movie", mMovie);
+        outState.putParcelableArrayList("reviews", (ArrayList<? extends Parcelable>) mUserReviews);
+        outState.putParcelableArrayList("trailers", (ArrayList<? extends Parcelable>) mTrailers);
     }
 }
