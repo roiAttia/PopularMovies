@@ -10,6 +10,16 @@ import com.google.gson.annotations.SerializedName;
 @AutoValue
 public abstract class Movie implements Parcelable {
 
+    private boolean isFavorite;
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     @SerializedName("id")
     public abstract int id();
     @SerializedName("original_title")

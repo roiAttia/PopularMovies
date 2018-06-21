@@ -14,4 +14,5 @@
     <string name="overview">OVERVIEW</string>
     <string name="trailer_list_item_thumbnail">trailer thumbnail</string>
     <string name="movie_details_backdrop_image_content_description">movie backdrop</string>
+    <string name="add_favorite">added to favorites!</string>
 </resources>

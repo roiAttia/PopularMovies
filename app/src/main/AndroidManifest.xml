@@ -25,6 +25,12 @@
             android:parentActivityName=".ui.MoviesListActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <provider
+            android:name="roiattia.com.newpopularmovies.data.MovieContentProvider"
+            android:authorities="roiattia.com.newpopularmovies"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
